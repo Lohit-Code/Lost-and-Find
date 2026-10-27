@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A campus lost-and-found portal for reporting, searching, and returning belongings."
+    />
+    <meta name="theme-color" content="#0f766e" />
+
+    <title>Campus Lost & Found | Find It. Report It. Return It.</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <span class="logo-icon">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          </span>
+          Lost<span>&Found</span>
+        </a>
+
+        <nav aria-label="Main navigation">
+          <ul class="nav-links" id="navLinks">
+            <li>
+              <a href="#home">
+                <i class="fa-solid fa-house" aria-hidden="true"></i>
+                Home
+              </a>
+            </li>
+
+            <li>
+              <a href="#report" data-report-type="lost">
+                <i class="fa-solid fa-file-circle-plus" aria-hidden="true"></i>
+                Report Item
+              </a>
+            </li>
+
+            <li>
+              <a href="#lost-items">
+                <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+                Lost Items
+              </a>
+            </li>
+
+            <li>
+              <a href="#how-it-works">
+                <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                How It Works
+              </a>
+            </li>
+
+            <li>
+              <a href="#contact"> Contact </a>
+            </li>
+          </ul>
+        </nav>
+
+        <a href="#report" class="btn btn-primary nav-report" data-report-type="lost">
+          <i class="fa-solid fa-plus" aria-hidden="true"></i>
+          Report Lost Item
+        </a>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <span class="hero-badge">
+            <i class="fa-solid fa-shield-heart" aria-hidden="true"></i>
+            Your Campus Lost & Found Portal
+          </span>
+
+          <h1>
+            Lost Something?
+            <br />
+            <span>Let's Bring It Back.</span>
+          </h1>
+
+          <p>
+            A simple and trusted way for students to report lost belongings,
+            discover missing items, and reconnect with what matters.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#report" class="btn btn-primary" data-report-type="lost">
+              <i class="fa-solid fa-file-circle-plus" aria-hidden="true"></i>
+              Report an Item
+            </a>
+
+            <a href="#lost-items" class="btn btn-outline">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              Find Lost Items
+            </a>
+          </div>
+
+          
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+              <strong>120+</strong>
+              <span>Items Reported</span>
+            </div>
+
+            <div class="hero-stat">
+              <i class="fa-solid fa-handshake" aria-hidden="true"></i>
+              <strong>85+</strong>
+              <span>Items Returned</span>
+            </div>
+
+            <div class="hero-stat">
+              <i class="fa-solid fa-users" aria-hidden="true"></i>
+              <strong>500+</strong>
+              <span>Students Helped</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section search-section">
+        <div class="section-title-wrapper">
+          <span class="section-tag">
+            <i class="fa-solid fa-search" aria-hidden="true"></i>
+            FIND YOUR BELONGINGS
+          </span>
+
+          <h2 class="section-title">Looking for something?</h2>
+
+          <p class="section-subtitle">
+            Search through items reported by students across campus.
+          </p>
+        </div>
+
+        <form
+          id="site-search"
+          class="search-box"
+          role="search"
+          aria-label="Search lost-item listings"
+        >
+          <label class="visually-hidden" for="searchInput">Search listings</label>
+
+          <div class="search-icon" aria-hidden="true">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          </div>
+
+          <input
+            type="search"
+            id="searchInput"
+            name="q"
+            placeholder="Search for wallet, keys, backpack..."
+            autocomplete="off"
+            aria-describedby="search-results-status"
+          />
+
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+
+        <p
+          id="search-results-status"
+          class="visually-hidden"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        ></p>
+      </section>
+
+      <section id="report" class="section section-alt">
+        <div class="section-title-wrapper">
+          <span class="section-tag">
+            <i class="fa-solid fa-flag" aria-hidden="true"></i>
+            REPORT AN ITEM
+          </span>
+
+          <h2 class="section-title">Tell Us About the Item</h2>
+
+          <p class="section-subtitle">
+            Share a few details so the campus community can help reunite it
+            with its owner.
+          </p>
+        </div>
+
+        <form id="lostItemForm" class="lost-form" aria-describedby="formError formSuccess">
+          <div class="form-header full-width">
+            <div class="form-header-icon">
+              <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+            </div>
+
+            <div>
+              <h3>Item Details</h3>
+              <p>
+                Fields marked with <span class="required">*</span> are required.
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="reportType">
+              <i class="fa-solid fa-clipboard-question" aria-hidden="true"></i>
+              Report Type
+              <span class="required">*</span>
+            </label>
+
+            <select id="reportType" name="reportType" required>
+              <option value="lost" selected>I lost an item</option>
+              <option value="found">I found an item</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="itemImage">
+              <i class="fa-regular fa-image" aria-hidden="true"></i>
+              Item Image
+              <span class="required">*</span>
+            </label>
+
+            <div class="upload-area">
+              <input
+                type="file"
+                id="itemImage"
+                name="itemImage"
+                accept="image/jpeg,image/png,image/webp"
+                required
+                aria-describedby="imageHelp"
+              />
+
+              <div class="upload-content">
+                <div class="upload-icon">
+                  <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+                </div>
+
+                <h4>Upload an image</h4>
+
+                <p>Add a clear photo of your lost item</p>
+
+                <span> JPG, PNG or WEBP </span>
+              </div>
+            </div>
+
+            <p id="imageHelp" class="form-help">
+              Use a JPG, PNG, or WEBP image under 5 MB.
+            </p>
+
+            <div class="image-preview-box" id="imagePreviewBox">
+              <span id="imagePreviewText"> No image selected </span>
+
+              <img
+                id="imagePreview"
+                src=""
+                alt="Preview of selected lost item"
+                hidden
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="itemName">
+              <i class="fa-solid fa-tag" aria-hidden="true"></i>
+              Item Name
+              <span class="required">*</span>
+            </label>
+
+            <input
+              type="text"
+              id="itemName"
+              name="itemName"
+              placeholder="e.g. Black Wallet"
+              autocomplete="off"
+              required
+              minlength="2"
+              maxlength="100"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="itemCategory">
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+              Category
+              <span class="required">*</span>
+            </label>
+
+            <select id="itemCategory" name="itemCategory" required>
+              <option value="" selected disabled>Select a category</option>
+
+              <option value="electronics">Electronics</option>
+
+              <option value="wallets">Wallets</option>
+
+              <option value="keys">Keys</option>
+
+              <option value="bags">Bags</option>
+
+              <option value="accessories">Accessories</option>
+
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="itemDescription">
+              <i class="fa-solid fa-align-left" aria-hidden="true"></i>
+              Description
+              <span class="required">*</span>
+            </label>
+
+            <textarea
+              id="itemDescription"
+              name="itemDescription"
+              rows="4"
+              placeholder="Describe the item — color, brand, model, unique marks..."
+              required
+              minlength="5"
+              maxlength="1000"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="itemLocation">
+              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+              Location Where Lost
+              <span class="required">*</span>
+            </label>
+
+            <input
+              type="text"
+              id="itemLocation"
+              name="itemLocation"
+              placeholder="e.g. Pokki Puri"
+              required
+              minlength="2"
+              maxlength="150"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="itemDate">
+              <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+              Date Lost
+            </label>
+
+            <input type="date" id="itemDate" name="itemDate" />
+          </div>
+
+          <div class="form-group">
+            <label for="reporterName">
+              <i class="fa-regular fa-user" aria-hidden="true"></i>
+              Your Name
+              <span class="required">*</span>
+            </label>
+
+            <input
+              type="text"
+              id="reporterName"
+              name="reporterName"
+              placeholder="e.g. Lohit "
+              autocomplete="name"
+              required
+              minlength="2"
+              maxlength="100"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="reporterPhone">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              Phone Number
+              <span class="required">*</span>
+            </label>
+
+            <input
+              type="tel"
+              id="reporterPhone"
+              name="reporterPhone"
+              placeholder="e.g. 70320620XX"
+              autocomplete="tel"
+              inputmode="numeric"
+              pattern="[0-9]{10}"
+              minlength="10"
+              maxlength="10"
+              title="Enter a 10-digit phone number without spaces or punctuation."
+              required
+            />
+          </div>
+
+          <div class="form-messages full-width">
+            <p
+              id="formError"
+              class="form-error"
+              role="alert"
+              aria-live="assertive"
+              aria-atomic="true"
+              hidden
+            ></p>
+
+            <p
+              id="formSuccess"
+              class="form-success"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+              hidden
+            ></p>
+          </div>
+
+          <div class="form-submit full-width">
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              Submit Item Report
+            </button>
+
+            <p>
+              <i class="fa-solid fa-lock" aria-hidden="true"></i>
+              Only share contact details you are comfortable using for item recovery.
+            </p>
+          </div>
+        </form>
+      </section>
+
+      <section id="lost-items" class="section">
+        <div class="section-title-wrapper">
+          <span class="section-tag">
+            <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+            CAMPUS LISTINGS
+          </span>
+
+          <h2 class="section-title">Recently Reported Items</h2>
+
+          <p class="section-subtitle">
+            Someone may have found what you're looking for. Browse the latest
+            reports from your campus community.
+          </p>
+        </div>
+
+        <div class="filter-bar" role="group" aria-label="Filter item listings by category">
+          <button
+            class="filter-btn active"
+            type="button"
+            data-category="all"
+            aria-pressed="true"
+            aria-controls="cardsGrid"
+          >
+            All Items
+          </button>
+
+          <button
+            class="filter-btn"
+            type="button"
+            data-category="electronics"
+            aria-pressed="false"
+            aria-controls="cardsGrid"
+          >
+            Electronics
+          </button>
+
+          <button
+            class="filter-btn"
+            type="button"
+            data-category="wallets"
+            aria-pressed="false"
+            aria-controls="cardsGrid"
+          >
+            Wallets
+          </button>
+
+          <button
+            class="filter-btn"
+            type="button"
+            data-category="keys"
+            aria-pressed="false"
+            aria-controls="cardsGrid"
+          >
+            Keys
+          </button>
+
+          <button
+            class="filter-btn"
+            type="button"
+            data-category="bags"
+            aria-pressed="false"
+            aria-controls="cardsGrid"
+          >
+            Bags
+          </button>
+
+          <button
+            class="filter-btn"
+            type="button"
+            data-category="accessories"
+            aria-pressed="false"
+            aria-controls="cardsGrid"
+          >
+            Accessories
+          </button>
+
+          <button
+            class="filter-btn"
+            type="button"
+            data-category="other"
+            aria-pressed="false"
+            aria-controls="cardsGrid"
+          >
+            Other
+          </button>
+        </div>
+
+        <div class="cards-grid" id="cardsGrid">
+          <article class="card" data-category="wallets" data-report-type="lost">
+            <div class="card-image">
+              <img
+                src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=700&h=500&q=80"
+                alt="Brown leather wallet"
+                width="700"
+                height="500"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <span class="card-status">
+                <i class="fa-solid fa-circle" aria-hidden="true"></i>
+                Lost
+              </span>
+            </div>
+
+            <div class="card-body">
+              <span class="badge">
+                <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+                Wallet
+              </span>
+
+              <h3>Brown Wallet</h3>
+
+              <p class="card-desc">Brown leather wallet with a small logo.</p>
+
+              <div class="card-details">
+                <p class="card-meta">
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                  College Campus
+                </p>
+
+                <p class="card-meta">
+                  <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+                  <time datetime="2026-09-10">10 September 2026</time>
+                </p>
+
+                <p class="card-meta">
+                  <i class="fa-regular fa-user" aria-hidden="true"></i>
+                  Luffy
+                </p>
+              </div>
+
+              <button
+                class="btn btn-small found-button"
+                type="button"
+                aria-label="I found Brown Wallet"
+              >
+                <i class="fa-solid fa-hand-pointer" aria-hidden="true"></i>
+                I Found This
+              </button>
+            </div>
+          </article>
+
+          <article class="card" data-category="keys" data-report-type="lost">
+            <div class="card-image">
+              <img
+                src="https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=700&h=500&q=80"
+                alt="Bunch of three keys with red keychain"
+                width="700"
+                height="500"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <span class="card-status">
+                <i class="fa-solid fa-circle" aria-hidden="true"></i>
+                Lost
+              </span>
+            </div>
+
+            <div class="card-body">
+              <span class="badge">
+                <i class="fa-solid fa-key" aria-hidden="true"></i>
+                Keys
+              </span>
+
+              <h3>Bunch of Keys</h3>
+
+              <p class="card-desc">Set of 3 keys with a red keychain.</p>
+
+              <div class="card-details">
+                <p class="card-meta">
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                  Parking Area
+                </p>
+
+                <p class="card-meta">
+                  <i class="fa-regular fa-calendar" aria-hidden="true"></i>
+                  <time datetime="2026-09-08">08 September 2026</time>
+                </p>
+
+                <p class="card-meta">
+                  <i class="fa-regular fa-user" aria-hidden="true"></i>
+                  Zoro
+                </p>
+              </div>
+
+              <button
+                class="btn btn-small found-button"
+                type="button"
+                aria-label="I found Bunch of Keys"
+              >
+                <i class="fa-solid fa-hand-pointer" aria-hidden="true"></i>
+                I Found This
+              </button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-image">
+              <img
+                src="https://images.unsplash.com/photo-1581605405669-fcdf81165afa?w=700&h=500&fit=crop"
+                alt="Blue backpack"
+                loading="lazy"
+              />
+
+              <span class="card-status">
+                <i class="fa-solid fa-circle"></i>
+                Lost
+              </span>
+            </div>
+
+            <div class="card-body">
+              <span class="badge">
+                <i class="fa-solid fa-bag-shopping"></i>
+                Bag
+              </span>
+
+              <h3>Black Backpack</h3>
+
+              <p class="card-desc">Black backpack with a laptop compartment.</p>
+
+              <div class="card-details">
+                <p class="card-meta">
+                  <i class="fa-solid fa-location-dot"></i>
+                  Green Zy
+                </p>
+
+                <p class="card-meta">
+                  <i class="fa-regular fa-calendar"></i>
+                  05 September 2026
+                </p>
+
+                <p class="card-meta">
+                  <i class="fa-regular fa-user"></i>
+                  Nami
+                </p>
+              </div>
+
+              <button class="btn btn-small found-button">
+                <i class="fa-solid fa-hand-pointer"></i>
+                I Found This
+              </button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-image">
+              <img
+                src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&h=500&fit=crop"
+                alt="white smart watch"
+                loading="lazy"
+              />
+
+              <span class="card-status">
+                <i class="fa-solid fa-circle"></i>
+                Lost
+              </span>
+            </div>
+
+            <div class="card-body">
+              <span class="badge">
+                <i class="fa-solid fa-microchip"></i>
+                Electronics
+              </span>
+
+              <h3>Smart Watch</h3>
+
+              <p class="card-desc">White smart watch with a cracked strap.</p>
+
+              <div class="card-details">
+                <p class="card-meta">
+                  <i class="fa-solid fa-location-dot"></i>
+                  Sports Ground
+                </p>
+
+                <p class="card-meta">
+                  <i class="fa-regular fa-calendar"></i>
+                  02 September 2026
+                </p>
+
+                <p class="card-meta">
+                  <i class="fa-regular fa-user"></i>
+                  Robin
+                </p>
+              </div>
+
+              <button class="btn btn-small found-button">
+                <i class="fa-solid fa-hand-pointer"></i>
+                I Found This
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="section-title-wrapper">
+          <span class="section-tag">
+            <i class="fa-solid fa-star"></i>
+            WHY USE OUR PORTAL
+          </span>
+
+          <h2 class="section-title">Built for Your Campus</h2>
+
+          <p class="section-subtitle">
+            Everything you need to make finding lost belongings easier.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+
+            <h3>Quick & Simple</h3>
+
+            <p>
+              Report a lost item in just a few steps without complicated forms.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+
+            <h3>Campus Community</h3>
+
+            <p>
+              Connect students who lost items with people who may have found
+              them.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <h3>Privacy Focused</h3>
+
+            <p>
+              Keep your personal information limited to what is needed for
+              recovery.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+
+            <h3>Works Everywhere</h3>
+
+            <p>Access the portal from your laptop, tablet, or smartphone.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="section">
+        <div class="section-title-wrapper">
+          <span class="section-tag">
+            <i class="fa-solid fa-route"></i>
+            SIMPLE PROCESS
+          </span>
+
+          <h2 class="section-title">How It Works</h2>
+
+          <p class="section-subtitle">
+            Three simple steps to turn a lost item into a found one.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+
+            <div class="step-icon">
+              <i class="fa-solid fa-file-circle-plus"></i>
+            </div>
+
+            <h3>Report</h3>
+
+            <p>
+              Tell the campus community what you lost and where you last saw it.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">02</div>
+
+            <div class="step-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+
+            <h3>Search</h3>
+
+            <p>
+              Browse recent reports and look for an item matching your
+              description.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">03</div>
+
+            <div class="step-icon">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+
+            <h3>Reunite</h3>
+
+            <p>Connect with the finder and safely get your belongings back.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-content">
+          <span class="cta-icon">
+            <i class="fa-solid fa-heart"></i>
+          </span>
+
+          <h2>Found Something That Isn't Yours?</h2>
+
+          <p>
+            Help a fellow student. Report the item and give it a chance to find
+            its way back home.
+          </p>
+
+          <a href="#report" class="btn btn-primary">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            Report a Found Item
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#home" class="logo">
+            <span class="logo-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+            Lost<span>&Found</span>
+          </a>
+
+          <p>
+            Helping students reconnect with their belongings and building a more
+            helpful campus community.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <div>
+            <h4>Quick Links</h4>
+
+            <a href="#home">Home</a>
+            <a href="#report">Report Item</a>
+            <a href="#lost-items">Lost Items</a>
+            <a href="#how-it-works">How It Works</a>
+          </div>
+
+          <div>
+            <h4>Contact</h4>
+
+            <a href="mailto:support@lostandfound.edu">
+              <i class="fa-solid fa-envelope"></i>
+              teamimmortals69@gmail.com
+            </a>
+
+            <a href="tel:+919876543210">
+              <i class="fa-solid fa-phone"></i>
+              +91 81508 64402
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Campus Lost & Found. Built to help our campus community.</p>
+
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="#" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
